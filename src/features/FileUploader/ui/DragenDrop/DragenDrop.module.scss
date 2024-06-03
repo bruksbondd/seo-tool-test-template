@@ -48,3 +48,16 @@
         cursor: pointer;
     }
 }
+
+@media (max-width: 1000px) {
+    .Uploader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px dashed var(--border);
+        width: auto;
+        padding: 40px;
+        border-radius: 10px;
+        
+    }
+}

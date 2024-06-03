@@ -11,3 +11,10 @@
     cursor: pointer;
     z-index: var(--overlay-z-index);
 }
+
+
+@media (max-width: 1000px) {
+    .Overlay {
+        top: 0;
+    }
+}
