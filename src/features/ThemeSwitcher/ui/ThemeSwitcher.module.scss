@@ -1,0 +1,16 @@
+.wraperSwicher {
+    display: flex;
+}
+
+.disableColor {
+    fill: var(--secondary-color);
+    color: var(--secondary-color);
+    path {
+        fill: var(--secondary-color);
+        color: var(--secondary-color);
+    }
+}
+
+.iconSwicher {
+    margin: 0 7px;
+}

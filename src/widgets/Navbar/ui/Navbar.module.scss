@@ -1,0 +1,40 @@
+.NavWraper {
+    width: 100%;
+    height: var(--navbar-height);
+    background: var(--navbar-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.Navbar {
+    width: 1240px;
+    display: flex;
+    align-items: center;
+}
+
+.navigation {
+    width: 100%;
+}
+
+.links,
+.actions {
+    margin-left: auto;
+}
+
+.displayHideMob {
+    display: flex;
+ }
+.displayVisibleMob {
+    display: none;
+}
+
+@media (max-width: 860px) {
+    .displayHideMob {
+       display: none;
+    }
+    .displayVisibleMob {
+        display: flex;
+     }
+}  

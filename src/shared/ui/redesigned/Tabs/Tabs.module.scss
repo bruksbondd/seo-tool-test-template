@@ -1,0 +1,65 @@
+.Tabs {
+    display: block;
+    padding: 50px;
+    width: 100%;
+    gap: 8px;
+    cursor: pointer;
+    
+    .tabButon {
+        height: 60px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font: var(--font-l);
+        color: var(--border);
+    }
+    
+    .tabButonAct {
+        background: var(--primary-color)!important;
+        border-radius: 60px;
+        font-weight: 600;
+        color: var(--card-bg);
+        &:hover {
+            color: var(--card-bg);
+        }
+    }
+}
+
+.tabsHeader {
+    width: 80%;
+    height: 70px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+    border: 1px solid var(--border);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box;
+    border-radius: 70px;
+}
+
+.nameTabBlock {
+    margin-bottom: 30px;
+}
+
+.tabsHeaderFull {
+    width: 100%;
+}
+
+@media (max-width: 680px) {
+    .Tabs {
+       padding: 10px;
+
+        .tabsHeader {
+         width: 100%;
+        }
+        
+        .tabButon {
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+}
+

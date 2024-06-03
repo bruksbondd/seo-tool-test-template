@@ -1,0 +1,50 @@
+.Uploader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px dashed var(--border);
+    width: 422px;
+    padding: 40px;
+    border-radius: 10px;
+    
+}
+
+.input {
+    margin-top: 10px;
+}
+
+.textSeparate {
+    display: flex;
+    align-items: center;
+    span {
+        display: block;
+        width: 93px;
+        height: 2px;
+        margin: 13px;
+        background: var(--border);
+    }
+}
+
+.uploadButton {
+    margin: auto;
+    margin-top: 5px;
+    height: 60px;
+    width: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: var(--font-l);
+    
+    background: var(--primary-color);
+    border-radius: 60px;
+    font-weight: 600;
+    color: var(--card-bg);
+    cursor: pointer;
+    &:hover {
+        color: var(--card-bg);
+    }
+
+    label {
+        cursor: pointer;
+    }
+}

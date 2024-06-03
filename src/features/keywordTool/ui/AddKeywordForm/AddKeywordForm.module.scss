@@ -1,0 +1,49 @@
+.UrlForm {
+    margin-top: 30px;
+    
+}
+
+.input {
+    background: var(--white);
+    width: 100%;
+    flex-grow: 1;
+}
+
+.iconBg {
+    background: var(--primary-color);
+    padding: 2px;
+    border-radius: 100%;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    width: 54px;
+}
+
+.nameBlock {
+    margin-bottom: 10px;
+    color: var(--text-black);
+    font-size: 16px;
+}
+
+
+.sendButon {
+    margin: auto;
+    margin-top: 30px;
+    height: 60px;
+    width: 360px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: var(--font-l);
+
+    background: var(--primary-color);
+    border-radius: 60px;
+    font-weight: 600;
+    color: var(--card-bg);
+    &:hover {
+        color: var(--card-bg);
+    }
+}
