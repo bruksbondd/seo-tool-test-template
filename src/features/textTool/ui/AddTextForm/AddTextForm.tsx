@@ -14,13 +14,16 @@ import TextField from '@/features/textEditor/ui/textField/TextField';
 import { getDataUrlTool } from '@/features/urlTool/model/services/getDataUrlTool';
 import { getTextFieldText } from '@/features/textEditor/model/selectors/TextFieldSelectors';
 import { urlFormReducer } from '@/features/urlTool/model/slices/addUrlFormSlice';
+import { getRecivedUrlData, statusLoadingData } from '@/features/urlTool/model/selectors/urlFormSelectors';
+import { Loader } from '@/shared/ui/deprecated/Loader';
+import { textFormReducer } from '../../model/slices/textFormSlice';
 
 export interface AddTextFormProps {
     className?: string;
 }
 
 const reducers: ReducersList = {
-    // textForm: textFormReducer,
+    textForm: textFormReducer,
     urlForm: urlFormReducer,
 };
 
@@ -28,6 +31,8 @@ const AddTextForm = memo((props: AddTextFormProps) => {
     const { t } = useTranslation();
     const dispatch = useAppDispatch();
     const text = useSelector(getTextFieldText);
+    const isLoading = useSelector(statusLoadingData);
+
 
     const onSendHandler = useCallback(() => {
         dispatch(getDataUrlTool(text));
@@ -43,7 +48,7 @@ const AddTextForm = memo((props: AddTextFormProps) => {
                     className={cls.sendButon}
                     onClick={onSendHandler}
                 >
-                    {t('Check Keyword Density')}
+                   {isLoading ? <Loader /> : t('Check Keyword Density')}
                 </Button>
             </Card>
         </DynamicModuleLoader>

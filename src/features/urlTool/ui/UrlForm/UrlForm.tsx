@@ -22,12 +22,15 @@ import { Text } from '@/shared/ui/redesigned/Text';
 import { Checkbox } from '@/features/checkbox';
 import TextField from '@/features/textEditor/ui/textField/TextField';
 import {
+    getRecivedUrlData,
     getUrlFormError,
     getUrlFormUrl,
+    statusLoadingData,
 } from '../../model/selectors/urlFormSelectors';
 import { useFetchUrlTool } from '@/pages/SeoToolsPage/api/urlToolApi';
 import { validURL } from '@/shared/lib/scripts/scripts';
 import { getDataUrlTool } from '../../model/services/getDataUrlTool';
+import { Loader } from '@/shared/ui/deprecated/Loader';
 
 export interface UrlFormProps {
     className?: string;
@@ -41,7 +44,9 @@ const UrlForm = memo((props: UrlFormProps) => {
     const { className } = props;
     const { t } = useTranslation();
     const url = useSelector(getUrlFormUrl);
-
+    // const isLoading = useSelector(statusLoadingData);
+    const isLoading = true;
+    
     const error = useSelector(getUrlFormError);
     const dispatch = useAppDispatch();
 
@@ -80,18 +85,7 @@ const UrlForm = memo((props: UrlFormProps) => {
             return null;
         }
         dispatch(getDataUrlTool(url));
-
-        // try {
-        //     fetchUrlToolDataMutation({
-        //         title: url,
-        //         body: 'excludeKeywords',
-        //         userId: 1,
-        //     });
-        // } catch (e) {
-        //     // handle error
-        //     console.log(e);
-        // }
-    }, [url, includeTitles, fetchUrlToolDataMutation]);
+    }, [url, getDataUrlTool, fetchUrlToolDataMutation]);
 
     const AddonIcon = () => {
         return (
@@ -153,7 +147,8 @@ const UrlForm = memo((props: UrlFormProps) => {
                     className={cls.sendButon}
                     onClick={() => onSendHandler()}
                 >
-                    {t('Check Keyword Density')}
+                    {isLoading ? <Loader /> : t('Check Keyword Density')}
+                   
                 </Button>
             </Card>
         </DynamicModuleLoader>

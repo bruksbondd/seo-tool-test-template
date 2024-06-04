@@ -30,7 +30,7 @@ export const addUrlFormSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(getDataUrlTool.fulfilled, (state, action) => {
-                console.log('response', action.payload);
+              
                 state.isLoading = false;
                 state.recivedUrlData = action.payload;
                 

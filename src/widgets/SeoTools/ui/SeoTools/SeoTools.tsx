@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './SeoTools.module.scss';
@@ -19,8 +19,6 @@ import {
     getRecivedUrlData,
     statusLoadingData,
 } from '@/features/urlTool/model/selectors/urlFormSelectors';
-import { Skeleton } from '@/shared/ui/redesigned/Skeleton';
-import { Loader } from '@/shared/ui/deprecated/Loader';
 
 interface SeoToolsProps {
     className?: string;
@@ -157,10 +155,13 @@ const data2 = [
 export const SeoTools = memo((props: SeoToolsProps) => {
     const { className } = props;
     const { t } = useTranslation();
+    const tableRef = useRef<HTMLInputElement>(null);
+
+    const tableScroll = () => tableRef?.current?.scrollIntoView() 
 
     const [activeTab, setActiveTab] = useState('URL');
     const recivedData = useSelector(getRecivedUrlData);
-    const isLoading = useSelector(statusLoadingData);
+    
 
     const tabs = [
         { value: 'URL', name: 'URL', content: <UrlForm /> },
@@ -184,7 +185,7 @@ export const SeoTools = memo((props: SeoToolsProps) => {
     const tabsTopKeywordsDensity = [
         {
             value: '1WORD',
-            name: '2 WORD',
+            name: '1 WORD',
             content: <TableResult density={true} data={data} />,
         },
         {
@@ -204,9 +205,13 @@ export const SeoTools = memo((props: SeoToolsProps) => {
         },
     ];
 
-    if (isLoading) {
-        return <Loader />;
-    }
+    useEffect(() => {
+        setTimeout(() => {
+            tableScroll()
+        }, 200);
+
+    }, [recivedData])
+
 
     return (
         <VStack
@@ -222,8 +227,9 @@ export const SeoTools = memo((props: SeoToolsProps) => {
             />
 
             {recivedData?.length ? (
-                <>
+                <div ref={tableRef}>
                     <ResultWithTable
+                        
                         tabs={tabsTopKeywords}
                         title="Top Keywords"
                         value="ANALYSIS"
@@ -235,7 +241,7 @@ export const SeoTools = memo((props: SeoToolsProps) => {
                         value="1WORD"
                         addButton={true}
                     />
-                </>
+                </div>
             ) : null}
         </VStack>
     );

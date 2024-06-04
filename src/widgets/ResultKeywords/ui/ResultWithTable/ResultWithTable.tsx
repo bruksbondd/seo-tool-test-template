@@ -22,6 +22,7 @@ export const ResultWithTable = memo(
         const [activeTab, setActiveTab] = useState(value)
         return (
             <VStack
+            
                 gap="4"
                 align='start'
                 className={classNames(cls.ResultWithTable, {}, [

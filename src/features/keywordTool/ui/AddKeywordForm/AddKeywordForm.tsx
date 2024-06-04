@@ -22,6 +22,8 @@ import Keyword from '@/shared/assets/icons/keyword.svg';
 import { Text } from '@/shared/ui/redesigned/Text';
 import { getDataUrlTool } from '@/features/urlTool/model/services/getDataUrlTool';
 import { urlFormReducer } from '@/features/urlTool/model/slices/addUrlFormSlice';
+import { statusLoadingData } from '@/features/urlTool/model/selectors/urlFormSelectors';
+import { Loader } from '@/shared/ui/deprecated/Loader';
 
 export interface UrlFormProps {
     className?: string;
@@ -38,6 +40,7 @@ const AddKeywordForm = memo((props: UrlFormProps) => {
     const text = useSelector(getKeywordFormText);
     const error = useSelector(getKeywordFormError);
     const dispatch = useAppDispatch();
+    const isLoading = useSelector(statusLoadingData);
 
     const onKeywordChange = useCallback(
         (value: string) => {
@@ -79,7 +82,7 @@ const AddKeywordForm = memo((props: UrlFormProps) => {
                     className={cls.sendButon}
                     onClick={onSendHandler}
                 >
-                    {t('Check Keyword Density')}
+                   {isLoading ? <Loader /> : t('Check Keyword Density')}
                 </Button>
             </Card>
         </DynamicModuleLoader>

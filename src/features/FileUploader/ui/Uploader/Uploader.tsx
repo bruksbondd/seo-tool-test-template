@@ -34,7 +34,7 @@ const Uploader = memo(({ className, onSuccess }: UploaderProps) => {
     const forceUpdate = useForceUpdate();
 
     const [files, setFiles] = useState<File[]>([]);
-    console.log('files', files);
+
 
     return (
         <DynamicModuleLoader removeAfterUnmount reducers={initialReducers}>

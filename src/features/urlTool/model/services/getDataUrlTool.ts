@@ -11,7 +11,7 @@ export const getDataUrlTool = createAsyncThunk<
     ThunkConfig<string>
 >('urlForm/getDataUrlTool', async (url, thunkApi) => {
     const { extra, dispatch, rejectWithValue, getState } = thunkApi;
-console.log('url', url)
+
     if (!url) {
         return rejectWithValue('no data');
     }
